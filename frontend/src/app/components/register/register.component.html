@@ -1,0 +1,68 @@
+<!-- @author Youri Janssen -->
+<!-- Edited by Marcus K. to have the style of the login component
+In practice I should merge both of these, but that would require a ton of work not planned out.
+Currently I'm just doing a visual overhaul by making the styling consistent and fixing visual bugs, not rewriting stuff -->
+<!-- Register Form Section -->
+<section class="popupHeader">
+<h1>Registreren</h1>
+<h1 class="closeButton" (click)="closeOverlay()" (keyup.enter)="closeOverlay()" tabindex="0">X</h1>
+</section>
+<section class="formSection">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Email Form Control -->
+        <label for="email">E-mailadres</label>
+        <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="bv. johndoe@gmail.com"
+            (keyup.enter)="onSubmit()"
+            />
+        <div *ngIf="isFormControlInvalid('email')" class="error-message">
+            Email is required. It should contain: <br />
+            - One "@" symbol; <br />
+            - A period (".") after the "@" symbol; <br />
+            - No spaces. <br />
+            - No quotation marks. <br />
+            - No Non-ASCII characters. <br />
+        </div>
+        <!-- Image Form Control -->
+        <label for="password">Wachtwoord</label>
+        <input
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder="wachtwoord" 
+            (keyup.enter)="onSubmit()"/>
+        <div *ngIf="isFormControlInvalid('password')" class="error-message">
+            Password is required. It should: <br />
+            - Have a minimum length of 8 characters; <br />
+            - Have a maximum length of 32 characters; <br />
+            - At least one uppercase letter; <br />
+            - At least one lowercase letter; <br />
+            - At least one number; <br />
+            - At least one special character.
+        </div>
+        <!-- Submit Button -->
+        <button type="submit">Registreer</button>
+    </form>
+
+    <!-- Error Messages -->
+    <div *ngIf="invalidForm" class="error-message">
+        Please fill in all required fields correctly before submitting.
+    </div>
+    <div *ngIf="errorOccuredMessage" class="error-message">
+        An error occurred while signing up.
+    </div>
+
+    <div *ngIf="userExistsError" class="error-message">
+        A user with the provided email address already exists.
+    </div>
+
+    <div *ngIf="validForm && registerForm.valid" class="success-message">
+        Your account has successfully been created!
+    </div>
+
+    <a id="loginButton" (click)="switchToLoginOverlay()" (keyup)="switchToLoginOverlay()" tabindex="0">Heb je al een account?
+        Log dan hier in!</a>
+</section>

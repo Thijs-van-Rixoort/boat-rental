@@ -1,0 +1,76 @@
+.formSection {
+    padding: 1rem;
+    border: 3px solid #456ed8;
+}
+
+.errorText {
+    margin: 0;
+    text-align: center;
+    color: red;
+}
+
+h1 {
+    margin: 0;
+    padding: 1rem;
+    background-color: #456ed8;
+    color: #f8f8f8;
+}
+
+p {
+    margin: 0;
+}
+
+label {
+    color: black;
+    font-weight: bold;
+
+    width: 100%;
+    margin-top: 1rem;
+}
+
+input {
+    width: 97%;
+    border-color: #456ed8;
+    border-radius: 0.3125rem;
+    padding: 0.625rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    width: 33%;
+    height: 3rem;
+
+    font-size: xx-large;
+    font-weight: 900;
+
+    border-radius: 0.625rem;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/*Quickly added by Marcus K.*/
+#registerButton {
+    color: blue;
+    text-decoration: underline;
+}
+
+#registerButton:hover {
+    color: rgb(67, 67, 255);
+}
+
+.popupHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: #456ed8;
+}
+
+#registerButton, .closeButton {
+    cursor: pointer;
+    user-select: none;
+}

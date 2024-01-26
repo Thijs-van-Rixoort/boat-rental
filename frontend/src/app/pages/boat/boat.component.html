@@ -1,0 +1,15 @@
+<!-- @author Thijs van Rixoort -->
+<section class="boat-list">
+    <app-boat-card
+        *ngFor="let boat of searchedBoats"
+        [boat]="boat"
+        routerLink="/boten/{{ boat.id }}">
+    </app-boat-card>
+</section>
+
+<section>
+    <h3 *ngIf="error !== ''" class="error">{{ error }}</h3>
+    <button *ngIf="!error" class="searchMoreButton" (click)="searchMoreBoats()">
+        zoek meer boten
+    </button>
+</section>

@@ -1,0 +1,14 @@
+.dashboard {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+app-button-list {
+    display: flex;
+    position: relative;
+    padding: 2rem;
+}
+
+app-dashboard-tab {
+    padding: 2rem;
+}

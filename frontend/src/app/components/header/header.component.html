@@ -1,0 +1,84 @@
+<header>
+    <section class="mainHeader" [style.background-color]="pageType.colour">
+        <section class="headerBacking"></section>
+
+        <a class="branding" routerLink="/start">
+            <img
+                src="..\..\..\assets\boatLogo.png"
+                alt="Boot Logotje"
+                class="headerLogo"
+                draggable="false" />
+            <section class="companyName">Het Vrolijke Avontuur</section>
+        </a>
+
+        <section class="headerButtons">
+            <a routerLink="boten" class="iconButton" [hidden]="true"
+                ><fa-icon [icon]="faMagnifyingGlass" size="2x"></fa-icon
+            ></a>
+
+            <a
+                (click)="openLoginOverlay()"
+                (keyup)="openLoginOverlay()"
+                class="iconButton"
+                *ngIf="!loggedIn"
+                tabindex="0"
+                ><fa-icon [icon]="faCircleUser" size="2x"></fa-icon
+            ></a>
+
+            <section class="clearSection">
+                <a
+                    class="iconButton userInitials"
+                    *ngIf="loggedIn"
+                    (click)="dropdownToggle()"
+                    (keyup)="dropdownToggle()"
+                    tabindex="0"
+                    #userButton
+                    >{{ userData.firstName[0] }}{{ userData.lastName[0] }}</a
+                >
+
+                <ng-container
+                    *ngIf="dropdownVisible"
+                    style="position: relative"
+                    #dropdown>
+                    <ul class="userDropdown">
+                        <li
+                            class="liStyle"
+                            routerLink="profiel"
+                            [hidden]="true">
+                            Profiel
+                        </li>
+                        <li
+                            class="liStyle"
+                            routerLink="dashboard"
+                            *ngIf="isAdmin">
+                            Admin
+                        </li>
+                        <li
+                            class="liStyle"
+                            (click)="logOut()"
+                            (keyup)="logOut()"
+                            tabindex="0">
+                            Uitloggen
+                        </li>
+                    </ul>
+                </ng-container>
+            </section>
+
+            <a routerLink="winkelwagen" class="iconButton" [hidden]="true"
+                ><fa-icon [icon]="faShoppingCart" size="2x"></fa-icon
+            ></a>
+        </section>
+    </section>
+
+    <section
+        class="subHeader"
+        [ngStyle]="{ height: pageType.biggerBanner ? '7.5rem' : '5rem' }"
+        [style.background-color]="pageType.colour">
+        <section class="headerTitle">{{ pageType.title }}</section>
+        <section class="searchbar" [hidden]="!pageType.search">
+        <!-- Relocated and updated version of Youri's search functionality -->
+        <input class="searchbox" type="search" placeholder="Zoeken" [(ngModel)]="searchQuery" (keyup.enter)="runSearchQuery(searchQuery)" />
+        <button id="searchButton" (click)="runSearchQuery(searchQuery)"><fa-icon [icon]="faMagnifyingGlass" size="lg"></fa-icon></button>
+        </section>
+    </section>
+</header>

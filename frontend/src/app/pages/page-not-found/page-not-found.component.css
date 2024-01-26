@@ -1,0 +1,94 @@
+.pageNotFoundComponent {
+    height: 78vh; /*This is a bullshit value, Get something dynamic*/
+    position: relative;
+}
+
+.returnButton {
+    color: black;
+    background-color: #dcdcdc;
+    padding: 1rem;
+    border-radius: 5rem;
+
+    position: absolute;
+    margin: 2.5rem;
+}
+
+.returnButton,
+.returnHomeButton {
+    transition: filter 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.returnButton:hover,
+.returnHomeButton:hover {
+    filter: brightness(1.25);
+}
+
+.pageNotFoundMessage {
+    position: absolute;
+    z-index: 1;
+    top: 5rem;
+
+    font-size: 1.5rem;
+    margin: 3em;
+
+    backdrop-filter: blur(5rem);
+    color: #456ed8;
+}
+
+.messageHeading {
+    display: block;
+}
+
+.messageHeadingStyling {
+    display: inline-block;
+    margin: 0.25rem;
+
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.messageSubText {
+    font-weight: 500;
+    margin: 0.25rem;
+}
+
+.returnHomeButton {
+    display: inline-block;
+
+    padding: 0.6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    font-weight: 500;
+
+    background-color: #456ed8;
+    color: white;
+
+    border-radius: 0.5rem;
+    margin: 0.25rem;
+    margin-top: 1rem;
+}
+
+.errorCode {
+    color: #585858;
+    position: absolute;
+
+    font-size: 1.25rem;
+    left: 5rem;
+    bottom: 4rem;
+}
+
+.pageNotFoundImage {
+    position: absolute;
+
+    width: 23.75rem;
+
+    right: 6rem;
+    bottom: 4rem;
+
+    image-rendering: crisp-edges;
+
+    user-select: none;
+}

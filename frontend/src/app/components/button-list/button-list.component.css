@@ -1,0 +1,60 @@
+.listStyle {
+    list-style: none;
+    list-style-type: none;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.buttonStyle {
+    margin-bottom: 0.5rem;
+    width: 23.5rem;
+    padding-left: 0.75rem;
+    height: 4rem;
+
+    color: #141414;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 2rem;
+
+    background: linear-gradient(
+            to left,
+            rgba(220, 220, 220, 1) 50%,
+            var(--button-color) 50%
+        )
+        right;
+    background-size: 200%;
+    transition: 0.5s ease-out;
+
+    border-color: var(--button-color);
+    border-left-style: solid;
+    border-left-width: 0.75rem;
+
+    transition: background 0.35s ease;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.buttonStyle:hover {
+    background-position: left;
+    color: white;
+    filter: contrast(0.9);
+}
+
+@property --button-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: unset;
+}
+
+.buttonStyle:active {
+    filter: brightness(1.1);
+}
+
+.active {
+    background: var(--button-color);
+    color: white;
+}

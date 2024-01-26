@@ -1,0 +1,40 @@
+/* Application-wide Styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+html {
+    height: 100%;
+    background-color: #f8f8f8;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background-color: #456ed8;
+    color: #f8f8f8;
+    border: unset;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition-duration: 300ms;
+}
+
+button:hover {
+    filter: brightness(1.25);
+}
+
+button:active {
+    transition-duration: 0s;
+    filter: brightness(0.75);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

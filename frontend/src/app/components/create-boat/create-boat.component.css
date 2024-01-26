@@ -1,0 +1,205 @@
+.imageManagement {
+    width: 38rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    gap: 1rem 1rem;
+}
+
+.imageSelected {
+    border-style: solid;
+    box-sizing: border-box;
+    border-width: 2px;
+    border-color: #456ed8;
+}
+
+.thumbnailImage {
+    width: 28.125rem;
+    height: 15.6rem;
+    object-fit: cover;
+
+    border-radius: 0.25rem;
+}
+
+.imageList {
+    margin: 0;
+    width: 7.65rem;
+    height: 15.6rem;
+
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+
+    padding: 0;
+    gap: 0.75rem 0rem;
+
+    align-items: normal;
+}
+
+.scrollBox {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.image {
+    border-radius: 0.25rem;
+    width: 7.65rem;
+    height: 4.25rem;
+    object-fit: cover;
+
+    cursor: pointer;
+}
+
+.imageClass {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.facilityArray {
+    display: flex;
+    text-align: right;
+    width: min-content;
+    margin-left: auto;
+}
+
+.deletionButton {
+    position: absolute;
+    background-color: darkred;
+}
+
+#imageUrl {
+    padding-right: 9rem;
+}
+
+.addImageButton {
+    position: relative;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    right: 8.5rem;
+}
+
+#facilities {
+    width: 9rem;
+    padding-right: 2rem;
+}
+
+.addFacilityButton {
+    position: relative;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    right: 1.45rem;
+}
+
+.creationMenu {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.keyInformation {
+    padding-right: 2rem;
+    border-right: solid;
+    border-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30rem;
+
+    gap: 1rem 1rem;
+}
+
+.otherData {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+}
+
+label {
+    display: block;
+    padding-bottom: 0.25rem;
+}
+
+.toggleLabel {
+    display: inline;
+}
+
+.mainData {
+    width: 37.75rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 1rem 1rem;
+}
+
+.numberInput {
+    width: 5rem;
+}
+
+.otherRight,
+.otherLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 1rem;
+
+    align-self: flex-end;
+}
+
+.otherRight {
+    align-items: flex-end;
+}
+
+.submitButton {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.detailsTitle {
+    align-self: flex-start;
+}
+
+.error,
+.subError {
+    color: darkred;
+}
+
+.subError {
+    font-size: 0.85rem;
+}
+
+.rightLabel {
+    align-self: flex-end;
+}
+
+#description {
+    resize: none;
+}
+
+.detailsTitle {
+    display: block;
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+}

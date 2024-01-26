@@ -1,0 +1,28 @@
+<section class="pageNotFoundComponent">
+    <fa-icon
+        [icon]="faArrowLeft"
+        (click)="goBack()"
+        class="returnButton"
+        size="2xl"></fa-icon>
+
+    <section class="pageNotFoundMessage">
+        <section class="messageHeading">
+            <section class="messageHeadingStyling">
+                Oeps! Wij kunnen deze pagina niet vinden!
+            </section>
+        </section>
+        <section class="messageSubText">
+            Op dit adres is er geen bestaande pagina. Check of de url goed
+            gespeld is of keer terug naar de vorige pagina.
+        </section>
+        <section class="returnHomeButton" routerLink="/start">
+            Ga naar home
+        </section>
+    </section>
+    <section class="errorCode">{{ errorCode }} - {{ errorMessage }}</section>
+    <img
+        src="..\..\..\assets\boatLogoConfused.png"
+        alt="VerwardBootje"
+        class="pageNotFoundImage"
+        draggable="false" />
+</section>

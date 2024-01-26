@@ -1,0 +1,10 @@
+<section class="headTabs">
+    <!-- I'm slicing it so you cant put too many, preferrably I want to add scrolling to this at some point. -->
+    <section class="tab" *ngFor="let tab of tabs | slice:0:3; index as i; first as isFirst"
+        [style.--tab-colour]="tab.colour" [ngClass]="activeTab === i ? null : 'inactive'" (click)="activeTab = i"
+        (keydown.enter)="activeTab = i" tabindex="0">{{tab.title}}</section>
+</section>
+<section class="tabBody">
+    <section class="bodyContent"><ng-content></ng-content></section>
+    
+</section>

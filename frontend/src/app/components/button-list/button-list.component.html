@@ -1,0 +1,11 @@
+<ul class="listStyle">
+    <li
+        class="buttonStyle"
+        *ngFor="let button of buttons"
+        [style.--button-color]="button.colour"
+        routerLink="{{ button.routerLink }}"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        {{ button.title }}
+    </li>
+</ul>

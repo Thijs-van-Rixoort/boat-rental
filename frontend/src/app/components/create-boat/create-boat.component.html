@@ -1,0 +1,269 @@
+<form class="creationMenu" [formGroup]="createBoatForm" (ngSubmit)="onSubmit()">
+    <section class="keyInformation">
+        <section class="title">Nieuwe Boot</section>
+        <section class="imageManagement">
+            <img
+                class="thumbnailImage"
+                src="{{ imageArray[thumbnailId] }}"
+                alt="Thumbnail van je afbeelding."
+                onerror="this.src='../../../assets/addImage.png'"
+                draggable="false" />
+            <section class="scrollBox">
+                <ul class="imageList">
+                    <section
+                        class="imageClass"
+                        *ngFor="let image of imageArray; index as i">
+                        <button
+                            type="button"
+                            class="deletionButton"
+                            (click)="imageArray.splice(i, 1)">
+                            x
+                        </button>
+                        <img
+                            class="image"
+                            src="{{ image }}"
+                            alt="Een van je afbeeldingen."
+                            onerror="this.src='../../../assets/imageNotFound.png'"
+                            draggable="false"
+                            (click)="thumbnailId = i"
+                            (keydown)="thumbnailId = i"
+                            tabindex="0"
+                            [class.imageSelected]="
+                                thumbnailId === i ? true : false
+                            " />
+                    </section>
+                </ul>
+            </section>
+
+            <form (submit)="imageArray.push(newUrl!)" class="imageInput">
+                <input
+                    type="imageUrl"
+                    name="imageUrl"
+                    id="imageUrl"
+                    placeholder="Afbeelding URL"
+                    [(ngModel)]="newUrl" />
+                <button type="submit" class="addImageButton">
+                    Voeg Afbeelding Toe
+                </button>
+            </form>
+        </section>
+        <section class="mainData">
+            <section>
+                <label for="title">Naam *</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    formControlName="title" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('title')?.invalid &&
+                        createBoatForm.get('title')?.touched
+                    "
+                    class="subError">
+                    De titel moet tussen 1 tot 100 letters lang zijn
+                </section>
+            </section>
+            <section>
+                <label for="price" class="rightLabel">Prijs Per Dag *</label>
+                <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    class="numberInput"
+                    formControlName="price" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('price')?.invalid &&
+                        createBoatForm.get('price')?.touched
+                    "
+                    class="subError">
+                    De prijs moet een positief getal zijn
+                </section>
+            </section>
+            <section>
+                <label for="description">Beschrijving</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    cols="79"
+                    formControlName="description">
+                </textarea>
+                <section
+                    *ngIf="
+                        createBoatForm.get('description')?.invalid &&
+                        createBoatForm.get('description')?.touched
+                    "
+                    class="subError">
+                    De descriptie moet tussen 0 tot 255 letters lang zijn
+                </section>
+            </section>
+        </section>
+    </section>
+    <section class="otherData">
+        <section class="detailsTitle">Boot Details</section>
+        <section class="otherLeft">
+            <section>
+                <label for="capacity" class="rightLabel">Capaciteit*</label>
+                <input
+                    type="number"
+                    id="capacity"
+                    name="capacity"
+                    class="numberInput"
+                    formControlName="capacity" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('capacity')?.invalid &&
+                        createBoatForm.get('capacity')?.touched
+                    "
+                    class="subError">
+                    De capaciteit moet tussen 1 en 255 zitten
+                </section>
+            </section>
+            <section>
+                <label for="year" class="rightLabel">Bouwjaar</label>
+                <input
+                    type="number"
+                    id="year"
+                    name="year"
+                    class="numberInput"
+                    formControlName="year" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('year')?.invalid &&
+                        createBoatForm.get('year')?.touched
+                    "
+                    class="subError">
+                    Het jaar moet meer dan 0 zijn
+                </section>
+            </section>
+            <section>
+                <label for="length" class="rightLabel">Lengte *</label>
+                <input
+                    type="number"
+                    id="length"
+                    name="length"
+                    class="numberInput"
+                    formControlName="length" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('length')?.invalid &&
+                        createBoatForm.get('length')?.touched
+                    "
+                    class="subError">
+                    De lengte moet tussen 1 en 255 zitten
+                </section>
+            </section>
+            <section>
+                <label for="brand">Merk *</label>
+                <input
+                    type="text"
+                    id="brand"
+                    name="brand"
+                    formControlName="brand" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('brand')?.invalid &&
+                        createBoatForm.get('brand')?.touched
+                    "
+                    class="subError">
+                    Het merk moet tussen 1 en 100 letters lang zijn
+                </section>
+            </section>
+            <section>
+                <label for="model">Type *</label>
+                <input
+                    type="text"
+                    id="model"
+                    name="model"
+                    formControlName="model" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('model')?.invalid &&
+                        createBoatForm.get('model')?.touched
+                    "
+                    class="subError">
+                    Het model moet tussen 1 en 100 letters lang zijn
+                </section>
+            </section>
+        </section>
+        <section class="otherRight">
+            <form
+                class="facilityStyling"
+                (submit)="facilityArray.push(newFacility!)">
+                <section
+                    *ngFor="let facilities of facilityArray; index as i"
+                    class="facilityArray">
+                    <section>{{ facilities }}</section>
+                    <button
+                        type="button"
+                        class="removeFacility"
+                        (click)="facilityArray.splice(i, 1)">
+                        x
+                    </button>
+                </section>
+                <label for="facilities">Faciliteiten</label>
+                <input
+                    type="text"
+                    id="facilities"
+                    name="facilities"
+                    [(ngModel)]="newFacility" />
+                <button type="submit" class="addFacilityButton">+</button>
+            </form>
+            <section>
+                <label for="active" class="toggleLabel">Actief</label>
+                <input
+                    type="checkbox"
+                    id="active"
+                    name="active"
+                    formControlName="active" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('active')?.invalid &&
+                        createBoatForm.get('active')?.touched
+                    "
+                    class="subError">
+                    De boot moet actief/inactief zijn
+                </section>
+            </section>
+            <section>
+                <label for="skipper" class="toggleLabel">Skipper</label>
+                <input
+                    type="checkbox"
+                    id="skipper"
+                    name="skipper"
+                    formControlName="skipper" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('skipper')?.invalid &&
+                        createBoatForm.get('skipper')?.touched
+                    "
+                    class="subError">
+                    Er moet wel of geen Skipper zijn
+                </section>
+            </section>
+            <section>
+                <label for="license" class="toggleLabel">Vaarbewijs</label>
+                <input
+                    type="checkbox"
+                    id="license"
+                    name="license"
+                    formControlName="license" />
+                <section
+                    *ngIf="
+                        createBoatForm.get('license')?.invalid &&
+                        createBoatForm.get('license')?.touched
+                    "
+                    class="subError">
+                    Er moet wel of geen Vaarbewijs zijn
+                </section>
+            </section>
+            <section class="submitButton">
+                <label for="save"></label>
+                <button type="submit" id="save" name="save">Opslaan</button>
+                <section class="error">{{ status }}</section>
+            </section>
+        </section>
+    </section>
+</form>

@@ -1,0 +1,163 @@
+<fa-icon
+    [icon]="faArrowLeft"
+    (click)="goBack()"
+    class="returnButton"
+    size="2xl"></fa-icon>
+
+<section class="boatSection" *ngIf="boatdata">
+    <section class="staticBoatData">
+        <section class="boatInformationCard">
+            <img
+                class="thumbnailImage"
+                src="{{ thumbnail }}"
+                alt="Een afbeelding van de boot"
+                onerror="this.src='../../../assets/imageNotFound.png'"
+                draggable="false" />
+
+            <section class="capacity">
+                <img
+                    class="capacityIcon"
+                    src="..\..\..\assets\capacityIcon.png"
+                    alt="Skipper Verplicht"
+                    draggable="false" />
+                {{ boatdata.capacity }}
+            </section>
+
+            <section class="price">
+                {{ boatdata.price }}
+                <section class="perDay">p/d</section>
+            </section>
+
+            <section class="boatTitle">
+                <section class="model">{{ boatdata.model }}</section>
+                <section class="name">{{ boatdata.name }}</section>
+            </section>
+
+            <section class="boatRequirements">
+                <section class="" *ngIf="boatdata.skipperRequired">
+                    <img
+                        class="requirementIcon"
+                        src="..\..\..\assets\captainRequired.png"
+                        alt="Skipper vereist"
+                        draggable="false" />
+                </section>
+
+                <section class="" *ngIf="boatdata.licenseRequired">
+                    <img
+                        class="requirementIcon"
+                        src="..\..\..\assets\licenseRequired.png"
+                        alt="Vaarbewijs vereist"
+                        draggable="false" />
+                </section>
+            </section>
+        </section>
+
+        <section class="boatDetails">
+            <section class="detailsHeader">Details</section>
+            <section class="detailsContent">
+                <section class="detailsDescription">
+                    {{ boatdata.description }}
+                </section>
+                <section
+                    class="detailsRequirements"
+                    *ngIf="boatdata.skipperRequired">
+                    Skipper vereist
+                </section>
+                <section
+                    class="detailsRequirements"
+                    *ngIf="boatdata.licenseRequired">
+                    Vaarbewijs vereist
+                </section>
+            </section>
+            <section class="detailsFooter">{{ boatdata.length }}m lang</section>
+        </section>
+
+        <section class="boatImageList">
+            <section
+                class="imageDirectionButton"
+                (click)="changeImage('previous')"
+                (keydown)="changeImage('previous')"
+                tabindex="0">
+                <
+            </section>
+
+            <ul
+                class="images"
+                [class.imagesScroll]="
+                    boatdata.imageArray.length > 6 ? false : true
+                ">
+                <li
+                    *ngFor="
+                        let image of boatdata.imageArray;
+                        index as imageIndex
+                    ">
+                    <img
+                        class="previewImage"
+                        src="{{ image }}"
+                        alt="Een afbeelding van de boot"
+                        draggable="false"
+                        (click)="setImage(imageIndex)"
+                        (keydown)="setImage(imageIndex)"
+                        onerror="this.src='../../../assets/imageNotFound.png'"
+                        tabindex="0"
+                        [class.imageSelected]="
+                            currentThumbnail === imageIndex ? true : false
+                        " />
+                </li>
+            </ul>
+
+            <section
+                class="imageDirectionButton"
+                (click)="changeImage('next')"
+                (keydown)="changeImage('next')"
+                tabindex="0">
+                >
+            </section>
+        </section>
+    </section>
+
+    <section class="expandedDetailsContainer">
+        <section class="boatExpandedDetails">
+            <section class="expandedDetailsTitle">Uitgebreide details</section>
+            <section class="expandedDetails">
+                <section class="detailsTitles">Boot details</section>
+                <section class="expandedDetailsContent">
+                    <section
+                        *ngFor="let details of detailsArray"
+                        class="expandedContentRow">
+                        <section *ngIf="details">
+                            {{ details.contentTitle }}
+                        </section>
+                        <section *ngIf="details">
+                            {{ details.contentValue }}
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="expandedDetails">
+                <section class="detailsTitles">Extra details</section>
+                <section class="expandedDetailsContent">
+                    <section
+                        class="expandedContentRow"
+                        *ngIf="boatdata.licenseRequired">
+                        <section>Vaarbewijs nodig</section>
+                        <section>Ja</section>
+                    </section>
+                    <section
+                        class="expandedContentRow"
+                        *ngIf="boatdata.skipperRequired">
+                        <section>Skipper nodig</section>
+                        <section>Ja</section>
+                    </section>
+
+                    <section
+                        *ngFor="let facility of boatdata.facilityArray"
+                        class="expandedContentRow">
+                        <section>{{ facility }}</section>
+                        <section>Ja</section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>

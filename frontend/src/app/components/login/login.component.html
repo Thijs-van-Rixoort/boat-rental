@@ -1,0 +1,23 @@
+<section class="popupHeader">
+    <!-- Close button and section added by Marcus K.-->
+    <h1>Inloggen</h1>
+    <h1 class="closeButton" (click)="closeOverlay()" (keyup.enter)="closeOverlay()" tabindex="0">X</h1>
+    </section>
+<section class="formSection">
+    <h2 *ngIf="this.error !== ''" class="errorText">{{ this.error }}</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label for="email">E-mailadres</label>
+        <input type="email" id="email" formControlName="email" placeholder="bv. johndoe@gmail.com"
+            (keyup.enter)="onSubmit()" />
+
+        <label for="password">Wachtwoord</label>
+        <input type="password" id="password" formControlName="password" placeholder="wachtwoord"
+            (keyup.enter)="onSubmit()" />
+
+        <button type="submit">Log In</button>
+    </form>
+
+    <!-- Register button changed by Marcus -->
+    <a id="registerButton" (click)="switchToRegisterOverlay()" (keyup)="switchToRegisterOverlay()" tabindex="0">Heb je nog geen account?
+        Registreer dan hier.</a>
+</section>

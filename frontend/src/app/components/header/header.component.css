@@ -1,0 +1,206 @@
+.mainHeader {
+    position: relative;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 1;
+    height: 6rem;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+}
+
+.headerBacking {
+    position: absolute;
+    background-color: #f8f8f8f8;
+    backdrop-filter: blur(1rem);
+
+    left: 0rem;
+    top: 0rem;
+    width: 100%;
+
+    height: 11.2rem;
+    z-index: -1;
+
+    --mask: radial-gradient(
+                23.29em at 60% calc(100% - 27.55em),
+                #000 99.75%,
+                #0000 100.25%
+            )
+            calc(50% - 9.5em) 0/19em 100%,
+        radial-gradient(
+                23.29em at 60% calc(100% + 22.8em),
+                #0000 99.75%,
+                #000 100.25%
+            )
+            50% calc(100% - 4.75em) / 19em 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
+
+.subHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.branding {
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+
+    font-size: x-large;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.headerLogo {
+    height: 6.5rem;
+    padding-right: 1.25rem;
+}
+
+.companyName {
+    margin-bottom: 1.5rem;
+}
+
+.iconButton {
+    position: relative;
+    padding: 1rem;
+    bottom: 0.5rem;
+}
+
+.branding,
+.iconButton,
+.userInitials {
+    color: #141414;
+}
+
+.headerTitle {
+    position: absolute;
+
+    left: 2.5%;
+    padding: 1rem;
+    color: #f8f8f8;
+
+    font-size: 2.5rem;
+    font-weight: 600;
+
+    user-select: none;
+}
+
+.iconButton {
+    transition: filter 0.3s ease;
+}
+
+.iconButton:hover {
+    filter: brightness(5);
+}
+
+.liStyle:hover {
+    color: #6b6b6b;
+}
+
+.userInitials {
+    font-size: 1rem;
+    font-weight: 600;
+
+    padding: 0.25rem;
+    margin: 0.75rem;
+    bottom: 0.875rem;
+
+    border-width: 0.25rem;
+    border-radius: 100%;
+    border-style: solid;
+}
+
+.clearSection {
+    all: unset;
+}
+
+.userDropdown {
+    list-style: none;
+    padding: unset;
+
+    position: absolute;
+    background-color: #f8f8f8c9;
+
+    border: 0.15rem solid;
+    border-top: none;
+    border-right: none;
+    border-radius: 0rem 0rem 0rem 1rem;
+
+    right: 0rem;
+
+    backdrop-filter: blur(1rem);
+}
+
+.liStyle {
+    text-align: center;
+
+    color: black;
+    padding: 0.5rem;
+    margin: 0.5rem;
+
+    font-weight: 600;
+    font-size: 1.25rem;
+
+    background: radial-gradient(closest-side, #ffffffb0, #ffffff00);
+}
+
+.liStyle,
+.userInitials,
+.branding {
+    user-select: none;
+}
+
+.branding,
+.userDropdown,
+.iconButton {
+    cursor: pointer;
+}
+
+.searchbar {
+    z-index: 1;
+}
+
+.searchbox {
+    background-color: #d9d9d9;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 2.25rem;
+    width: 30rem;
+    border-radius: 3rem;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-width: 1px;
+}
+
+.searchbox::placeholder {
+    font-weight: 700;
+    color: rgba(0, 31, 109, 0.5);
+
+    position: relative;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchButton {
+    position: relative;
+    background-color: #eaeaea;
+    width: 3rem;
+    height: 3rem;
+
+    color: #02143a;
+
+    border-radius: 3rem;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-style: solid;
+    border-width: 1px;
+
+    right: 2rem;
+    bottom: 0.175rem;
+}

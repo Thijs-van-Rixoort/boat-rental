@@ -1,0 +1,46 @@
+<img
+    class="cardImage"
+    src="{{ boat.images[0] }}"
+    onerror="src='../../../assets/imageNotFound.png'"
+    alt="{{ boat.name }} - Het Vrolijke Avontuur" />
+
+<section class="boatInfo">
+    <h1 class="imageTopInfo right">
+        {{ boat.price_per_day_in_cents / 100 | currency : 'EUR' }} p/d
+    </h1>
+
+    <section class="imageBottomInfo">
+        <h1 id="boatName">{{ boat.name }}</h1>
+
+        <ul class="facilityList right">
+            <li
+                *ngFor="let facility of boat.facilities | slice : 0 : 3"
+                class="facility">
+                {{ facility }}
+            </li>
+        </ul>
+    </section>
+
+    <section class="belowImageInfo">
+        <section class="capacityInfo">
+            <img
+                class="infoIcon"
+                src="../../../assets/capacityIcon.png"
+                alt="Capacity {{ boat.capacity }}" />
+            <h1>{{ boat.capacity }}</h1>
+        </section>
+
+        <section class="right">
+            <img
+                *ngIf="boat.skipper_required"
+                class="infoIcon"
+                src="../../../assets/captainRequired.png"
+                alt="Skipper Required" />
+            <img
+                *ngIf="!boat.skipper_required && boat.license_required"
+                class="infoIcon"
+                src="../../../assets/licenseRequired.png"
+                alt="Skipper Required" />
+        </section>
+    </section>
+</section>
