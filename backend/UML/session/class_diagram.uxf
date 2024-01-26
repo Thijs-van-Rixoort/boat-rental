@@ -1,0 +1,193 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>1419</x><y>506</y><w>451</w><h>110</h></coordinates><panel_attributes>SessionController
+--
+- sessionService: SessionService
+--
++ constructor(sessionService: SessionService) 
++ login(request: Request, response: Response): Promise&lt;void&gt;
++ logout(request: Request, response: Response): Promise&lt;void&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1331</x><y>693</y><w>616</w><h>132</h></coordinates><panel_attributes>SessionService
+--
+- _database: DatabaseInterface;
+--
++ constructor(_database: DatabaseInterface)
++ login(email: string, password: string): Promise&lt;Session&gt;
++ logout(): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>627</x><y>1650</y><w>462</w><h>88</h></coordinates><panel_attributes>UserSequelizeDatabase
+--
++ getUserByEmail(userMail: string): Promise&lt;User&gt;
+- convertRowDataPacketToBusinessUser
+    (userData: UserModel): BusinessUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>341</x><y>880</y><w>418</w><h>264</h></coordinates><panel_attributes>User
+--
+- userMail: string
+- userPassword: string
+- type: UserRoles
+- active: number
+&lt;&lt;get&gt;&gt; - _id: number
+--
+- constructor(email: string, password: string, type: UserRoles, 
+active: number, _id: number | undefined)
++ createUser(userMail: string, userPassword: string): User 
++ createUserWithId(id: number, email: string, password: string, 
+type: Roles, active: number): User 
++ validateUser(): string[] | null
++ hashPassword(): Promise&lt;string&gt;
++ validatePassword(password: string): Promise&lt;boolean&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>1430</y><w>473</w><h>88</h></coordinates><panel_attributes>&lt;&lt;UserDatabaseInterface&gt;&gt;
+--
++ getUserByEmail(userMail: string): Promise&lt;User&gt;   </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1419</x><y>286</y><w>451</w><h>154</h></coordinates><panel_attributes>SessionRoutes
+--
+- router: Router 
+- sessionController: SessionController
+--
++ constructor(sessionController: SessionController)       
+- setupRoutes(): void
+- login(request: Request, response: Response): Promise&lt;void&gt;
+- logout(request: Request, response: Response): Promise&lt;void&gt;
++ getRouter(): Router</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>847</x><y>1507</y><w>286</w><h>165</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;10;240;100;10;100;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1628</x><y>429</y><w>33</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1628</x><y>605</y><w>33</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>1331</y><w>561</w><h>121</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>490;10;490;50;10;50;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>693</x><y>1573</y><w>110</w><h>33</h></coordinates><panel_attributes>UserModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>737</x><y>1595</y><w>33</w><h>77</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>847</x><y>1727</y><w>33</w><h>66</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>748</y><w>825</w><h>154</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;120;10;10;730;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>1606</y><w>286</w><h>66</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;240;10;240;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1133</x><y>1650</y><w>462</w><h>88</h></coordinates><panel_attributes>UserMysqlDatabase
+--
++ getUserByEmail(userMail: string): Promise&lt;User&gt;
+- convertRowDataPacketToBusinessUser
+    (userData: RowDataPacket): BusinessUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>1133</y><w>858</w><h>660</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;580;760;580;760;550</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1650</x><y>1628</y><w>473</w><h>132</h></coordinates><panel_attributes>SessionSequelizeDatabase
+--
++ createSession(userId: number): Promise&lt;Session&gt;
++ deleteSessionById(sessionId: string): Promise&lt;void&gt;
++ deleteExpiredSessionsByUserId(userId: number): Promise&lt;void&gt;
+- convertSequelizeSessionToBusinessSession
+    (sessionData: SequelizeSession): BusinessSession</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2200</x><y>880</y><w>649</w><h>154</h></coordinates><panel_attributes>Session
+--
+&lt;&lt;get/set&gt;&gt; - _id: string
+&lt;&lt;get/set&gt;&gt; - _expirationDate: Date
++ userId: number
+--
++ constructor(userId: number, id: string | undefined, expirationDate: Date | undefined)
+- createId(): string
+- createExpirationDate(): Date</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1914</x><y>1430</y><w>473</w><h>88</h></coordinates><panel_attributes>&lt;&lt;SessionDatabaseInterface&gt;&gt;
+--
++ createSession(userId: number): Promise&lt;Session&gt;
++ deleteSessionById(sessionId: string): Promise&lt;void&gt;
++ deleteExpiredSessionsByUserId(userId: number): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1881</x><y>1507</y><w>286</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;10;240;80;10;80;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1727</x><y>1551</y><w>110</w><h>33</h></coordinates><panel_attributes>SequelizeSession</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1771</x><y>1573</y><w>33</w><h>77</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1881</x><y>1023</y><w>803</w><h>792</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>590;10;590;520;710;520;710;700;10;700;10;670</additional_attributes></element><element><id>Relation</id><coordinates><x>2134</x><y>1584</y><w>286</w><h>66</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;240;10;240;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2167</x><y>1628</y><w>462</w><h>132</h></coordinates><panel_attributes>SessionMysqlDatabase
+--
++ createSession(userId: number): Promise&lt;Session&gt;
++ deleteSessionById(sessionId: string): Promise&lt;void&gt;
++ deleteExpiredSessionsByUserId(userId: number): Promise&lt;void&gt;
+- convertRowDataPacketToBusinessSession
+    (sessionData: RowDataPacket): BusinessSession</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2387</x><y>1749</y><w>33</w><h>66</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1628</x><y>1364</y><w>539</w><h>88</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;470;20;470;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1936</x><y>748</y><w>616</w><h>154</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>540;120;540;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1694</x><y>0</y><w>374</w><h>231</h></coordinates><panel_attributes>bg=black
+Aggregation
+This arrow represents an aggregation relationship.
+Aggregation implies that two classes are associated.
+However, the child can exist without the parent.
+
+For example:
+A SessionService object can exist without a 
+SessionController.
+A SessionController object can not exist without a
+SessionService.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1705</x><y>187</y><w>154</w><h>33</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>924</x><y>0</y><w>374</w><h>231</h></coordinates><panel_attributes>bg=black
+Dependency
+This arrow represents a dependency relationship.
+Dependency means that one class uses things like 
+attributes and methods from anoher class. 
+Therefore, one class is dependent on the other class.
+
+For example:
+The SessionService depends on the User class because it
+uses the validatePassword method.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>935</x><y>187</y><w>154</w><h>33</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1309</x><y>0</y><w>374</w><h>231</h></coordinates><panel_attributes>bg=black
+Realizes
+This arrow represents an interface realization relationship.
+This means that a class realizes/implements the interface. 
+
+For example:
+UserSequelizeDatabase realizes UserDatabaseInterface.
+UserSequelizeDatabase has to conform to the contract
+that UserDatabaseInterface provides.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1320</x><y>187</y><w>154</w><h>33</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>297</x><y>0</y><w>616</w><h>231</h></coordinates><panel_attributes>bg=black
+Classes &amp; Interfaces
+There are rectangles that represent classes and 
+interfaces from our code.
+Every class/interface has three sections:
+1. Name
+- this is simply a section with the class/interface name.
+  The title is surrounded by "&lt;&lt;&gt;&gt;" for interfaces.
+2. Attributes
+- Shows all the attributes that this class has, including
+their access modifiers. (-, +, #)
+3. Methods
+- Shows all the methods on this class, including
+their access modifiers. (-, +, #)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>22</y><w>231</w><h>187</h></coordinates><panel_attributes>Classname/&lt;&lt;InterfaceName&gt;&gt;
+--
++ publicProperty: boolean
+- privateProperty: number
+# protectedProperty: string
+--
++ publicMethod(arg1: string): void
+- privateMethod(): boolean
+#protectedMethod(): void </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>242</y><w>2607</w><h>418</h></coordinates><panel_attributes>lt=.
+halign=left
+fg=green
+Controller</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>660</y><w>2607</w><h>528</h></coordinates><panel_attributes>lt=.
+halign=left
+fg=green
+Business</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>1188</y><w>2607</w><h>671</h></coordinates><panel_attributes>lt=.
+halign=left
+fg=green
+Repository</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>242</y><w>297</w><h>341</h></coordinates><panel_attributes>lt=-
+halign=left
+bg=black
+Controller
+In the controller layer, we define our 
+endpoints. It is where we wait for http 
+requests and send back the appropriate
+responses.
+
+A request and response object should never
+exist beyond the controller layer.
+
+If you need to use any data sent with the
+request, you must split it off and send it to the
+business layer without the entire request
+object.
+
+Data for the response should end back up in the
+controller layer. The data is checked, added to 
+the response and the appropriate http 
+statuscode is added to the response.
+After that it is returned to the client over http.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>660</y><w>297</w><h>418</h></coordinates><panel_attributes>lt=-
+halign=left
+bg=black
+Business
+The business layer contains services and 
+business models.
+
+Business Models
+A business model is a class with attributes and
+business logic.
+For example:
+A user is a business model. It contains all the 
+data that of a user that is important for the 
+application, like an email, password, user type.
+
+It also contains business logic. 
+This would, for example, be the place where 
+we check if a user should be able to rent a 
+boat in this application.
+
+Services
+A service binds everything together.
+It receives data from the controller, executes
+the correct methods on the data access objects
+and business models.
+Eventually it sends the gathered data back to
+the controller.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1188</y><w>297</w><h>154</h></coordinates><panel_attributes>lt=-
+halign=left
+bg=black
+Repository
+The repository layer is the place where we
+send queries to the database and get back
+the data these queries gathered.
+This data is then returned to the service.
+
+The objects we use for this are called
+data access objects.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>0</y><w>286</w><h>231</h></coordinates><panel_attributes>bg=black
+fontsize=20
+@author Thijs van Rixoort	</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1408</x><y>1243</y><w>473</w><h>99</h></coordinates><panel_attributes>&lt;&lt;DatabaseInterface&gt;&gt;
+--
++ boat: BoatDatabaseInterface
++ register: RegisterDatabaseInterface
++ session: SessionDatabaseInterface
++ user: UserDatabaseInterface</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1628</x><y>814</y><w>33</w><h>451</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;390</additional_attributes></element></diagram>

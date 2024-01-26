@@ -1,0 +1,65 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>450</y><w>990</w><h>210</h></coordinates><panel_attributes>bg=black
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>230</y><w>990</w><h>210</h></coordinates><panel_attributes>bg=black
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>10</y><w>990</w><h>210</h></coordinates><panel_attributes>bg=black
+fg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>450</y><w>100</w><h>210</h></coordinates><panel_attributes>Data Layer
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>230</y><w>100</w><h>210</h></coordinates><panel_attributes>Business Layer
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>10</y><w>100</w><h>210</h></coordinates><panel_attributes>Controller
+Layer
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>20</y><w>300</w><h>110</h></coordinates><panel_attributes>BoatController
+--
+ + BoatController(private boatService: BoatService)
+--
+ + getBoat(response: Response): Promise&lt;void&gt;;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>240</y><w>370</w><h>110</h></coordinates><panel_attributes>BoatService
+--
+ + constructor(private getAllHardwareInterface:
+GetAllHardwareInterface) {}
+--
+ + findBoat(id: number): Promise&lt;detailedBoat | null&gt;
+ + compileBoatData(id: number): Promise&lt;detailedBoat | null&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>480</y><w>460</w><h>170</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; BoatDatabaseInterface
+--
+findOneBoat(
+        returnedBoat: RowDataPacket | BoatModel | null,
+        returnedFacilities: RowDataPacket[] | BoatModel[] | null,
+        returnedImages: RowDataPacket[] | BoatImageModel[] | null
+    ): Promise&lt;detailedBoat | null&gt;
+getMainData(id: number): Promise&lt;RowDataPacket | BoatModel | null&gt;
+getFacilityData(id: number): Promise&lt;RowDataPacket[] | BoatModel[] | null&gt;
+getImageData(id: number
+    ): Promise&lt;RowDataPacket[] | BoatImageModel[] | null&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>480</y><w>370</w><h>170</h></coordinates><panel_attributes>CreateHardwareSequelize
+--
+ + aSync getMainData(id: number): Promise&lt;RowDataPacket&gt;
+ + aSync getFacilityData(id: number): Promise&lt;RowDataPacket[]&gt;
+ + aSync getImageData(id: number): Promise&lt;RowDataPacket[]&gt;
+ + aSync findOneBoat(
+        returnedBoat: RowDataPacket,
+        returnedFacilities: RowDataPacket[],
+        returnedImages: RowDataPacket[]
+    ): Promise&lt;detailedBoat | null&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>340</y><w>30</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>600</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>340</y><w>60</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>120</y><w>60</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Text</id><coordinates><x>570</x><y>610</y><w>40</w><h>20</h></coordinates><panel_attributes>Is-a
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>10</y><w>260</w><h>210</h></coordinates><panel_attributes>The controller tells the BoatService
+to run findBoat(id);
+
+The controller utilizes the returned data
+to send back a status code based upon it.
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>230</y><w>260</w><h>210</h></coordinates><panel_attributes>The service passes the id to findBoat(id)
+which in turn passes it to compileBoatData(id)
+
+The compile function calls numerous
+queries in the interface and sends back
+either nothing or a boat object.
+
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>450</y><w>260</w><h>210</h></coordinates><panel_attributes>getMainData(id), getFacilityData(id) 
+&amp; getImageData(id) all work together
+to get all the data that exists of a boat.
+
+Upon success, these go back to be made
+into one within findOneBoat that
+uses the boat-detailed model.
+Afterwards, it sends it back to the service
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>120</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element></diagram>

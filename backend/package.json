@@ -1,0 +1,61 @@
+{
+  "name": "het-vrolijke-avontuur-backend",
+  "version": "1.0.0",
+  "description": "The Backend for our Angular/Node.JS WebApplication.",
+  "main": "server.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "ts-node-dev ./src/server.ts",
+    "test": "npx mocha --exit -r ts-node/register 'test/**/*.test.ts' --file test/mocha-setup.ts",
+    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" \"test/**/*.{test.ts,ts}\" --quiet --fix",
+    "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" \"test/**/*.{test.ts,ts}\" --write",
+    "check": "npm run lint & npm run format"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.fdmci.hva.nl/ad-software-development-2324/fdmci-ict-ad-sd101/sem2/vloot/backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.31.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "sequelize": "^6.35.1",
+    "sequelize-typescript": "^2.1.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/argon2": "^0.15.0",
+    "@types/chai": "^4.3.11",
+    "@types/chai-as-promised": "^7.1.8",
+    "@types/cookie-parser": "^1.4.6",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.6",
+    "@types/mysql": "^2.15.24",
+    "@types/node": "^20.9.4",
+    "@types/regenerator-runtime": "^0.13.5",
+    "@types/sinon": "^17.0.2",
+    "@types/supertest": "^2.0.16",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "mocha": "^10.2.0",
+    "regenerator-runtime": "^0.14.0",
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "ts-sinon": "^2.0.2",
+    "typescript": "^5.3.2"
+  }
+}

@@ -1,0 +1,98 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>440</y><w>990</w><h>510</h></coordinates><panel_attributes>bg=black
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>220</y><w>990</w><h>210</h></coordinates><panel_attributes>bg=black
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>990</w><h>210</h></coordinates><panel_attributes>bg=black
+fg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>440</y><w>100</w><h>510</h></coordinates><panel_attributes>Data Layer
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>220</y><w>100</w><h>210</h></coordinates><panel_attributes>Business Layer
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>100</w><h>210</h></coordinates><panel_attributes>Controller
+Layer
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>10</y><w>540</w><h>110</h></coordinates><panel_attributes>BoatController
+--
+ + BoatController(private boatService: BoatService)
+--
+ + createBoat
+( request: Request&lt;object, string, expectedCreateBody&gt;, response: Response): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>230</y><w>620</w><h>120</h></coordinates><panel_attributes>BoatService
+--
+ + constructor(private getAllHardwareInterface:
+GetAllHardwareInterface) {}
+--
+ + createBoat( incomingBoat: expectedCreateBody): Promise&lt;{ created: boolean; message: string }&gt;
+ - createBoatObject(incomingBoat: expectedCreateBody): IncomingDetailedBoat
+- creationQueries(boatData: IncomingDetailedBoat,transaction: Transaction | Connection): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>470</y><w>460</w><h>450</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; BoatDatabaseInterface
+--
+assignBrand(
+        brandModelData: {
+            brandName: string;
+            model: string;
+        },
+        transaction: Connection | Transaction
+    ): Promise&lt;DetailedBoat['modelId']&gt;;
+createNewBoat(
+        boatData: IncomingDetailedBoat,
+        transaction: Connection | Transaction
+    ): Promise&lt;BoatModel | DetailedBoat['id']&gt;;
+createFacilities(
+        facilityArray: string[],
+        transaction: Connection | Transaction
+    ): Promise&lt;FacilityModel[] | number[]&gt;;
+assignFacilities(
+        newBoatId: BoatModel | IncomingDetailedBoat['id'],
+        transaction: Connection | Transaction,
+        facilities: FacilityModel[] | number[]
+    ): Promise&lt;void&gt;;
+assignImages(
+        imageArray: string[],
+        transaction: Connection | Transaction,
+        newBoatId: BoatModel | IncomingDetailedBoat['id']
+    ): Promise&lt;void&gt;;
+startTransaction(): Promise&lt;Connection | Transaction&gt;;
+endTransaction(transaction: Connection | Transaction): Promise&lt;void&gt;;
+transactionRollback(connection: Connection | Transaction): Promise&lt;void&gt;;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>340</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>340</y><w>60</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>110</y><w>60</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>0</y><w>260</w><h>210</h></coordinates><panel_attributes>The controller tells the BoatService
+to run createBoat();
+
+The controller utilizes the returned data
+to send back a status code based upon it.
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>220</y><w>260</w><h>210</h></coordinates><panel_attributes>The service passes the inputted data to
+createBoat()
+which passes it to createBoatObject and
+creationQueries
+
+These verify if the incoming data is correct
+and run a transaction with it
+
+This finishes and sends back if it worked
+or not, with what message to give
+to the user.
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>440</y><w>260</w><h>510</h></coordinates><panel_attributes>AssignBrand() attempts to create a
+new brand/model in the database
+This returns the id it has found/created.
+
+createNewBoat() attempts to create a boat
+in the database and returns that boat.
+
+createFacilities() attempts to find/create
+new facilities in the database.
+
+assignFacilities() takes these new facilities
+and the new boat and
+tries to link them together in the database.
+
+assignImages() takes a newly created boat
+and assigns given images to it.
+
+startTransaction() simply does
+as the name implies,
+and then returns this transaction.
+
+endTransaction() simply does
+as the name implies.
+
+transactionRollback() simply does
+as the name implies.
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>110</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element></diagram>

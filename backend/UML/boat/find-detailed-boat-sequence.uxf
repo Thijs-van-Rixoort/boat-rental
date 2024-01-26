@@ -1,0 +1,77 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>70</x><y>0</y><w>980</w><h>490</h></coordinates><panel_attributes>http GET request - Retrieving data from Database
+--
+
+bg=black
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>70</y><w>30</w><h>440</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;420</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>70</y><w>30</w><h>440</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;420</additional_attributes></element><element><id>Relation</id><coordinates><x>60</x><y>60</y><w>270</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>Text</id><coordinates><x>230</x><y>190</y><w>130</w><h>40</h></coordinates><panel_attributes>localhost:3002/
+boat/detailed?id=?
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>230</x><y>170</y><w>140</w><h>20</h></coordinates><panel_attributes>HTTP GET REQUEST
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>570</x><y>190</y><w>140</w><h>40</h></coordinates><panel_attributes>getFacilityData
+(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>170</y><w>140</w><h>40</h></coordinates><panel_attributes>BoatModel.findOne
+(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>580</x><y>380</y><w>140</w><h>40</h></coordinates><panel_attributes>
+detailedBoat | null
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>410</x><y>390</y><w>140</w><h>40</h></coordinates><panel_attributes>
+detailedBoat | null
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>110</y><w>30</w><h>390</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;370</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>110</y><w>30</w><h>390</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;370</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>410</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>180</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>160</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>380</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>390</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Text</id><coordinates><x>240</x><y>400</y><w>140</w><h>40</h></coordinates><panel_attributes>Status Code (200)
+{ detailedBoat  }
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>70</x><y>530</y><w>980</w><h>220</h></coordinates><panel_attributes>Details about the Sequence diagram
+--
+
+http://localhost:3002/boat/detailed?id=? listens to any incoming GET requests.
+
+The BoatsController calls findBoat in the Service Layer.
+
+The DetailedBoatService continues this call to three functions in the Data Layer.
+
+Three queries get run, One to find a boat with its brand, one ot find all its facilities and one to find all of its images.
+
+These get send back and forth to be merged into one detailedBoat
+
+This goes through the Service to the Controller, where it's checked if it's not null. If it has data it will send it back to the user with a status code of (200)
+
+bg=#ff65a3</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>370</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>110</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLNote</id><coordinates><x>70</x><y>510</y><w>140</w><h>20</h></coordinates><panel_attributes>Marcus Kaagman
+bg=white
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>60</y><w>270</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>60</y><w>40</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;20;20</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>60</y><w>40</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;20;20</additional_attributes></element><element><id>Text</id><coordinates><x>750</x><y>370</y><w>130</w><h>40</h></coordinates><panel_attributes>
+BoatModel[] | null
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>360</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>230</y><w>30</w><h>170</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>900</x><y>230</y><w>140</w><h>150</h></coordinates><panel_attributes>het_vrolijke_avontuur
+--
+*Tables*
+--
+boat
+boatfacility
+facility
+boatimage
+
+
+bg=#ADD8E6
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>180</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>170</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Text</id><coordinates><x>400</x><y>180</y><w>140</w><h>40</h></coordinates><panel_attributes>findBoat
+(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>190</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>200</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>180</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>380</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>390</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>400</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>410</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>90</y><w>160</w><h>30</h></coordinates><panel_attributes>AdvancedBoat
+bg=green
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>30</y><w>160</w><h>60</h></coordinates><panel_attributes>Data Layer
+bg=green
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>30</y><w>160</w><h>60</h></coordinates><panel_attributes>Service Layer
+bg=red
+group=group-5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>90</y><w>160</w><h>30</h></coordinates><panel_attributes>DetailedBoatService
+bg=red
+group=group-5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>90</y><w>160</w><h>30</h></coordinates><panel_attributes>BoatController
+bg=blue
+group=group-6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>30</y><w>160</w><h>60</h></coordinates><panel_attributes>Controller Layer
+bg=blue
+group=group-6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>80</x><y>230</y><w>140</w><h>150</h></coordinates><panel_attributes>/boat/detailed?id=? 
+--
+bg=#ADD8E
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>110</x><y>270</y><w>80</w><h>110</h></coordinates><panel_attributes>User Client
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>210</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>180</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>200</y><w>140</w><h>40</h></coordinates><panel_attributes>BoatModel.findAll
+(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>240</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>220</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>230</y><w>140</w><h>40</h></coordinates><panel_attributes>BoatImageModel.findAll(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>410</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element><element><id>Text</id><coordinates><x>750</x><y>400</y><w>130</w><h>40</h></coordinates><panel_attributes>
+BoatImageModel[] | null
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>350</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element><element><id>Text</id><coordinates><x>750</x><y>340</y><w>130</w><h>40</h></coordinates><panel_attributes>
+BoatModel | null
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>150</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>170</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>570</x><y>160</y><w>140</w><h>40</h></coordinates><panel_attributes>getMainData
+(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>210</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>230</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>570</x><y>220</y><w>140</w><h>40</h></coordinates><panel_attributes>getImageData
+(id)
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element></diagram>
